@@ -1,1 +1,8 @@
-_form.html.erb
+
+<%= simple_form_for(@flat) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>

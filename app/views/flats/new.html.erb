@@ -1,15 +1,3 @@
 <h1>This is new</h1>
 
-<%= form_for(@flat) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-
-  <%= f.label :address %>
-  <%= f.text_field :address %>
-
-  <%= f.label :category %>
-  <%= f.text_field :category %>
-
-
-  <%= f.submit %>
-<% end %>
+<%= render 'form' %>
