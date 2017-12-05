@@ -1,9 +1,11 @@
 class FlatsController < ApplicationController
 
   def index
+    @flats = flats.all
   end
-
+# asjdjasldk
   def show
+
   end
 
   def new
