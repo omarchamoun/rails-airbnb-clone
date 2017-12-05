@@ -1,1 +1,9 @@
 <h1>This is the index</h1>
+
+<% @flats.each do |flat| %>
+  <%= link_to flat.name, flat_path(flat) %>
+  <%= flat.description %>
+  <%= flat.location %>
+  <%= flat.price %>
+
+<% end %>
