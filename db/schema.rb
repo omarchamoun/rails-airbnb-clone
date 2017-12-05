@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20171204165828) do
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
-    t.boolean "owner"
+    t.boolean "owner", default: false
     t.bigint "registration_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
