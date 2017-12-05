@@ -6,10 +6,10 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  protected
+ # protected
 
-  def after_sign_up_path_for(resource)
-    edit_user_path(resource.user)
-  end
+  # def after_sign_up_path_for(resource)
+  #   edit_user_path(resource.user)
+  # end
 
 end
