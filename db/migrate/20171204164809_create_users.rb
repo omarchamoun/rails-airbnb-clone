@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.string :gender
-      t.boolean :owner
+      t.boolean :owner, default: false
       t.references :registration, foreign_key: true
 
       t.timestamps
