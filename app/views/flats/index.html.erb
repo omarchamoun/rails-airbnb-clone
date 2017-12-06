@@ -1,9 +1,10 @@
+<%= render 'shared/navbar' %>
 <h2>All places</h1>
 <div class="container">
   <div class="row">
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/shanghai');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('snow.jpeg');">
         <div class="card-category">
           <p> Price: <%= flat.price %> </p>
         </div>
