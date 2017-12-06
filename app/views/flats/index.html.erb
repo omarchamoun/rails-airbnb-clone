@@ -17,7 +17,7 @@
       <div class="total-card">
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path "landhouse.jpeg"%>);">
           <div class="card-category">
-            <p> Price: <%= flat.price %> </p>
+            <p> From: €<%= flat.price %> </p>
           </div>
           <div class="card-description">
             <h3><%= link_to flat.name, flat_path(flat), {:style=> 'color:#E0D3DE;' 'text-decoration:none'}%></h3>
