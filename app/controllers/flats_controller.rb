@@ -7,7 +7,7 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
   end
 # asjdjasld
   def show
-
+    @booking = Booking.new
   end
 
   def new
