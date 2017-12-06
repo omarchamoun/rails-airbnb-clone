@@ -1,5 +1,8 @@
- <center><h1>Edit your flat</h1></center>
+<%= render 'shared/navbar' %>
 
-  <%= render 'form' %>
-  <%= link_to "back to flat", flat_path(@flat) %>
-
+<div class="banner banner-new" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "new_background.jpg"%>);">
+<div class="container">
+  <h1>Edit Your Flat</h1>
+<%= render 'form' %>
+</div>
+</div>
