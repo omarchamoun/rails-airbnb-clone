@@ -1,0 +1,29 @@
+.btn-airbnb{
+  background-color: white;
+  color: #ff2f51;
+  border: solid 3px #ff2f51;
+  border-radius: 5px;
+  opacity:0.6;
+  padding: 8px;
+  font-weight: lighter;
+  &:hover{
+    opacity:0.9;
+    text-decoration: none;
+    color: #ff2f51;
+  }
+}
+
+.btn-airbnb-pink{
+  background-color: #ff2f51;
+  color: white;
+  border-radius: 7px;
+  padding: 10px;
+  opacity:0.6;
+  font-weight: lighter;
+  &:hover{
+    opacity:0.9;
+    text-decoration: none;
+    color:white;
+  }
+
+}
