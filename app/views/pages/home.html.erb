@@ -1,2 +1,7 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "greece.jpg"%>);">
+  <div class="banner-content">
+    <h1>AirBnB</h1>
+    <p>Book unique flats and experience the city like a local</p>
+    <%=  link_to "Search for houses", flats_path, class: "btn-airbnb-pink" %>
+  </div>
+</div>
