@@ -1,0 +1,29 @@
+.wrapper-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper-description-book {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 20px;
+
+}
+
+.description-flat, .book-flat {
+  padding: 20px;
+}
+
+.description-flat {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.book-flat {
+  border: 1px solid lightgrey;
+  margin-left: 15px;
+}

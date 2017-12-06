@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   omniauth_callbacks: 'registrations/omniauth_callbacks' }
 
   resources :user, only: [:edit, :update, :destroy]
-  resources :flats
+  resources :flats do
+    resources :bookings, only: [:create, :destroy]
+  end
 
 end
 
