@@ -3,7 +3,7 @@ before_action :set_user
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = flats.all
+    @flats = Flat.all
   end
 # asjdjasld
   def show
