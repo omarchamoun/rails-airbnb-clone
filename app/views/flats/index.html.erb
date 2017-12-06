@@ -1,21 +1,24 @@
 <%= render 'shared/navbar' %>
-<h2>All places</h1>
-<div class="container">
+
+<div class="container cards-container">
   <div class="row">
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('snow.jpeg');">
-        <div class="card-category">
-          <p> Price: <%= flat.price %> </p>
+      <div class="total-card">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path "landhouse.jpeg"%>);">
+          <div class="card-category">
+            <p> Price: <%= flat.price %> </p>
+          </div>
+          <div class="card-description">
+            <h3><%= link_to flat.name, flat_path(flat), {:style=> 'color:#E0D3DE;' 'text-decoration:none'}%></h3>
+          </div>
         </div>
-        <div class="card-description">
-        <h3><%= link_to flat.name, flat_path(flat), {:style=> 'color:#E0D3DE;' 'text-decoration:none'}%></h3>
-        </div>
+        <p><%= flat.description %></p>
       </div>
     </div>
     <% end %>
   </div>
   <div class="add-flat">
-  <%= link_to "Add a new flat", new_flat_path, class: "btn-medium" %>
+    <%= link_to "Add a new flat", new_flat_path, class: "btn-airbnb" %>
   </div>
 </div>
