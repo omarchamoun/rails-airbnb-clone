@@ -11,6 +11,7 @@
         <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
         <% end %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path "landhouse.jpeg"%>');">
           <div class="card-category">
             <p> From: €<%= flat.price %> </p>
           </div>
