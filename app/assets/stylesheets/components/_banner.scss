@@ -37,9 +37,12 @@
 }
 
 .banner-new {
-height: calc(100vh - 70px)
-
+height: calc(100vh);
+a {
+  color:white;
+  }
 }
+
 .banner-home h1 {
   color: #ff2f51;
 }
