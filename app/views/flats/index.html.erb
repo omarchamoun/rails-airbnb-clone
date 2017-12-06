@@ -6,7 +6,11 @@
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
       <div class="total-card">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= image_path "landhouse.jpeg"%>);">
+        <% if flat.photo_url.nil? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dh46jpozr/image/upload/v1512142055/xhuisqcvgac3zxceybhd.jpg')";>
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
+        <% end %>
           <div class="card-category">
             <p> From: €<%= flat.price %> </p>
           </div>

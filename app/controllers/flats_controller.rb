@@ -47,7 +47,7 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
   private
 
   def flat_params
-    params.require(:flat).permit(:name, :description, :location, :price)
+    params.require(:flat).permit(:name, :description, :location, :price, :photo, :photo_cache)
   end
 
   def set_user
