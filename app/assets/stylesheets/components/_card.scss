@@ -46,3 +46,13 @@
 .card-link:hover {
   opacity: 0.1;
 }
+
+.total-card p {
+  overflow: hidden;
+  max-height: 50px;
+}
+
+.card-description h3 {
+  font-size: 20px;
+  color: white;
+}
