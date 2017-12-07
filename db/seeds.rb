@@ -4,8 +4,8 @@ User.destroy_all
 Registration.destroy_all
 Flat.destroy_all
 # Booking.destroy_all
-location = Faker::Address.street_address
-email = Faker::Internet.free_email
+# location = Faker::Address.street_address
+# email = Faker::Internet.free_email
 password = "123456"
 
 10.times do
@@ -22,7 +22,7 @@ password = "123456"
     flat = Flat.new(
       name: Faker::DragonBall.character,
       description: Faker::ChuckNorris.fact,
-      location: location,
+      location: Faker::Address.street_address,
       price: rand(100..1500),
       photo: url,
        )
