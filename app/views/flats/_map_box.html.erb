@@ -1,0 +1,18 @@
+<div id="total-box">
+  <div class="text-box">
+    <h3> <%= flat.name %> </h3>
+    <p> From €<%= flat.price %> per night</p>
+  </div>
+  <% if flat.photo_url.nil? %>
+    <div class="photo">
+      <img src="https://picsum.photos/300/200" alt="img">""
+    </div>
+  <% else %>
+    <div class="photo">
+      <%= cl_image_tag flat.photo, height: 200, width: 300, crop: :fill %>
+  <%end %>
+  </div>
+</div>
+
+
+
