@@ -9,9 +9,10 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/navbar' unless yield(:no_nav) %>
+    <%= render 'shared/navbar' %>
     <%= render 'shared/flash' %>
     <%= yield %>
+    <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
