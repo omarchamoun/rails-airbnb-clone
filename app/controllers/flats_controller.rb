@@ -3,9 +3,14 @@ before_action :set_user, only: [:create, :edit, :update, :destroy]
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.all
+    @flats = Flat.where.not(latitude: nil, longitude: nil)
+
+    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+    marker.lat flat.latitude
+    marker.lng flat.longitude
   end
-# asjdjasld
+  end
+
   def show
     @booking = Booking.new
   end

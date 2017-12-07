@@ -1,3 +1,20 @@
-.cards-container {
+.cards-map-container {
   margin-top: 30px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.row{
+  flex: 1 0 70%;
+  padding-left: 30px;
+  padding-right: 20px;
+}
+
+#map{
+  border: 1px solid rgb(250,250,250);
+  height: 85vh;
+  margin: 0px;
+  flex: 0 0 30%;
+  position: sticky !important;
+  top: 0;
 }

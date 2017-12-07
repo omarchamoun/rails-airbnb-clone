@@ -1,7 +1,7 @@
 
 <%= render 'shared/navbar' %>
 
-<div class="container cards-container">
+<div class="cards-map-container">
   <div class="row">
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
@@ -23,5 +23,23 @@
     </div>
     <% end %>
   </div>
+  <div id="map"></div>
 </div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    var handler = Gmaps.build('Google');
+    handler.buildMap({ internal: { id: 'map' } }, function() {
+      markers = handler.addMarkers(<%= raw @markers.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      if (markers.length == 0) {
+        handler.getMap().setZoom(2);
+      } else if (markers.length == 1) {
+        handler.getMap().setZoom(14);
+      }
+    });
+  <% end %>
+<% end %>
 
