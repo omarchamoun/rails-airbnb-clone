@@ -26,12 +26,42 @@
 
 
     <div class="book-flat">
-      <%= simple_form_for [@flat, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
+      <%= simple_form_for [@flat, @booking], input_html: { id: "flat-form"} do |f| %>
+        <%= f.input :start_date, as: :date, html5: true  %>
+        <%= f.input :end_date, as: :date, html5: true  %>
         <%= f.button :submit, class: "btn btn-primary" %>
+        <% #(start_date..end_date).to_a.size  %>
+
       <% end %>
     </div>
+
+<!-- <div id="total-price">
+
+</div>
+    <script>
+      const form = document.getElementById('new_booking')
+      form.addEventListener("change", function(event) {
+          let start = document.getElementById('booking_start_date').value;
+          let end = document.getElementById('booking_end_date').value;
+
+        Date.daysBetween = function(start, end) {
+          //Get 1 day in milliseconds
+          let one_day=1000*60*60*24;
+
+          // Convert both dates to milliseconds
+          let date1_ms = date1.getTime();
+          let date2_ms = date2.getTime();
+
+          // Calculate the difference in milliseconds
+          let difference_ms = date2_ms - date1_ms;
+
+          // Convert back to days and return
+          return Math.round(difference_ms/one_day);
+        }
+
+
+        });
+    </script> -->
 
 
 
