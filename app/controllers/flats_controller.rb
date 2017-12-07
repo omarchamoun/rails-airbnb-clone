@@ -18,8 +18,10 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
     @flat = Flat.new(flat_params)
     @flat.user = @user
     if @flat.save
+       flash[:notice] = "You have succesfully created a flat"
       redirect_to flat_path(@flat)
     else
+      flash[:alert] = "Oops, you forgot some important info"
       render :new
     end
   end
