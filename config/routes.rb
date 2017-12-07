@@ -6,7 +6,13 @@ Rails.application.routes.draw do
 
   resources :user, only: [:edit, :update, :destroy]
   resources :flats do
-    resources :bookings, only: [:create, :destroy]
+    resources :bookings, only: [:create, :destroy, :edit]
+  end
+
+  resources :bookings do
+    member do
+
+    end
   end
 
 end
