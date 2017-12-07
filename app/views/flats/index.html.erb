@@ -1,6 +1,8 @@
 
 <%= render 'shared/navbar' %>
-
+<% if @query %>
+  <h1>Your result for searching : <%= @query %></h1>
+<% end %>
 <div class="container cards-container">
   <div class="row">
     <% @flats.each do |flat| %>

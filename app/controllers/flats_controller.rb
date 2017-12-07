@@ -3,7 +3,11 @@ before_action :set_user, only: [:create, :edit, :update, :destroy]
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.all
+    if @query = params[:search]
+      @flats = Flat.search_full_text(@query)
+    else
+      @flats = Flat.all
+    end
   end
 # asjdjasld
   def show
