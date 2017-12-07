@@ -7,7 +7,7 @@
     <div class="col-xs-12 col-sm-4">
       <div class="total-card">
         <% if flat.photo_url.nil? %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dh46jpozr/image/upload/v1512142055/xhuisqcvgac3zxceybhd.jpg')";>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random')";>
         <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
         <% end %>
@@ -15,8 +15,9 @@
             <p> From: €<%= flat.price %> </p>
           </div>
           <div class="card-description">
-            <h3><%= link_to flat.name, flat_path(flat), {:style=> 'color:#E0D3DE;' 'text-decoration:none'}%></h3>
+            <h3><%= flat.name %></h3>
           </div>
+          <%= link_to '', flat_path(flat), class: "card-link" %>
         </div>
         <p><%= flat.location %></p>
       </div>
