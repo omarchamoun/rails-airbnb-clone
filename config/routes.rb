@@ -9,11 +9,14 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create, :destroy, :edit]
   end
 
-  resources :bookings do
+  resources :bookings, only: [:index] do
     member do
-
+     patch "cancel", to: "bookings#cancel"
+     patch "decline", to: "bookings#decline"
+     patch "approve", to: "bookings#approve"
     end
   end
+
 
 end
 
