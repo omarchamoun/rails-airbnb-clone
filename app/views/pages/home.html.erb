@@ -1,7 +1,56 @@
-<div class="banner banner-home" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "greece.jpg"%>);">
+
+<div class="banner banner-home" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.15) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "banner-3.webp"%>);">
+
   <div class="banner-content">
     <h1>AirBnB</h1>
     <p>Book unique flats and experience the city like a local</p>
-    <%=  link_to "Search for houses", flats_path, class: "btn-airbnb-pink" %>
+
+    <%= form_tag("/flats", method: "get") do %>
+      <%= label_tag(:search, "Search for:") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+    <% end %>
+    <%#  link_to "Search for houses", flats_path, class: "btn-airbnb-pink" %>
   </div>
 </div>
+
+<div class="cards-map-container">
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="total-card">
+        <% if flat.photo_url.nil? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random')";>
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
+        <% end %>
+          <div class="card-category">
+          </div>
+          <div class="card-description">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </div>
+          <%= link_to '', flat_path(flat), class: "card-link" %>
+        </div>
+        <h4><%= link_to flat.name, flat_path(flat) %></h4>
+        <p> From: €<%= flat.price %> per night </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="map">
+
+  </div>
+
+</div>
+
+
+<%= render 'shared/map' %>
+
+
+
+
+
+
+

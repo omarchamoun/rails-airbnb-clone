@@ -4,6 +4,12 @@ class RegistrationsController < Devise::RegistrationsController
     super do
       User.create(registration_id: resource.id)
     end
+
+  end
+
+  def after_sign_up_path_for(resource)
+    '/dashboard'
+    #dashboard_path
   end
 
  # protected

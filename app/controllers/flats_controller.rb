@@ -3,9 +3,21 @@ before_action :set_user, only: [:create, :edit, :update, :destroy]
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
-    @flats = Flat.all
+      @query = params[:search]
+      flats = Flat.search_full_text(@query)
+      @flats_with_lats = []
+      flats.each do |flat|
+        if flat.latitude && flat.longitude
+          @flats_with_lats << flat
+        end
+      end
+      @markers = Gmaps4rails.build_markers(@flats_with_lats) do |flat, marker|
+        marker.lat flat.latitude
+        marker.lng flat.longitude
+        marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+      end
   end
-# asjdjasld
+
   def show
     @booking = Booking.new
   end
