@@ -1,21 +1,32 @@
 <div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "background.jpg"%>);">
 </div>
 
-<%= link_to "Back to all flats", flats_path, class: "btn btn-primary" %>
 
 <div class="warapper-main">
   <div class="wrapper-description-book">
 
 
-    <div class="description-flat">
-      <h1>
+    <div id="info-flat">
+     <!--  <div class = "title-flat"> -->
+      <div class= "title-info">
+        <h1>
         <%= @flat.name %>
-      </h1>
-      <h5>
-        <%= @flat.description %>
-      </h5>
+        </h1>
+        <% avatar_url = @flat.user.facebook_picture_url || "http://placehold.it/30x30"%>
+        <%= image_tag avatar_url, class: "info-avatar" %> <%= @flat.user.first_name %>
+
+      </div>
       <h5>
         <%= @flat.location %>
+      </h5>
+      <div class = "icon-info">
+        <i class="fa fa-bath" aria-hidden="true"><strong>1 bath</strong></i>
+        <i class="fa fa-bed" aria-hidden="true"> <strong> 2 beds </strong></i>
+        <i class="fa fa-users" aria-hidden="true"><strong>3 people</strong></i>
+      </div>
+
+      <h5>
+        <%= @flat.description %>
       </h5>
     </div>
 

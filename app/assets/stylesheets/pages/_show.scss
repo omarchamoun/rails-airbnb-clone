@@ -18,15 +18,41 @@
   padding: 20px;
 }
 
-.description-flat {
+#info-flat {
+  position: relative;
   margin-right: 15px;
   margin-left: 15px;
-  max-width: 400px;
+  max-width: 600px;
 }
 
+.title-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon-info {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  margin-top: 50px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey
+}
 .book-flat {
   border: 1px solid lightgrey;
   margin-left: 15px;
 }
+
+.info-avatar {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
+
+
+
+
+
 
 
