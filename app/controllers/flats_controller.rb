@@ -60,24 +60,7 @@ helper_method :resource_name, :resource, :devise_mapping, :resource_class
     redirect_to flats_path
   end
 
-  ## methods for modal
 
- def resource_name
-    :registration
-  end
-
-  def resource
-    @resource ||= Registration.new
-  end
-
-  def resource_class
-    Registration
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:registration]
-  end
-  ##
 
   private
 

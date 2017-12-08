@@ -12,6 +12,9 @@ class BookingsController < ApplicationController
   end
 
   def create
+    if !current_user
+      redirect_to new_registration_registration_path
+    end
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = set_flat
