@@ -6,8 +6,17 @@ Rails.application.routes.draw do
 
   resources :user, only: [:edit, :update, :destroy]
   resources :flats do
-    resources :bookings, only: [:create, :destroy]
+    resources :bookings, only: [:create, :destroy, :edit]
   end
+
+  resources :bookings, only: [:index] do
+    member do
+     patch "cancel", to: "bookings#cancel"
+     patch "decline", to: "bookings#decline"
+     patch "approve", to: "bookings#approve"
+    end
+  end
+
 
 end
 

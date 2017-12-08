@@ -6,10 +6,14 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
     if @query = params[:search]
       @flats = Flat.search_full_text(@query)
     else
-      @flats = Flat.all
+      @flats = Flat.where.not(latitude: nil, longitude: nil)
+      @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+      marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end
-# asjdjasld
+
   def show
     @booking = Booking.new
   end
@@ -22,8 +26,10 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
     @flat = Flat.new(flat_params)
     @flat.user = @user
     if @flat.save
+       flash[:notice] = "You have succesfully created a flat"
       redirect_to flat_path(@flat)
     else
+      flash[:alert] = "Oops, you forgot some important info"
       render :new
     end
   end

@@ -1,26 +1,64 @@
 
+
 <%= render 'shared/navbar' %>
-<div class="container cards-container">
+
+<div class="cards-map-container">
+
   <div class="row">
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
       <div class="total-card">
         <% if flat.photo_url.nil? %>
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dh46jpozr/image/upload/v1512142055/xhuisqcvgac3zxceybhd.jpg')";>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random')";>
         <% else %>
           <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
         <% end %>
           <div class="card-category">
-            <p> From: €<%= flat.price %> </p>
           </div>
           <div class="card-description">
-            <h3><%= link_to flat.name, flat_path(flat), {:style=> 'color:#E0D3DE;' 'text-decoration:none'}%></h3>
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
           </div>
+          <%= link_to '', flat_path(flat), class: "card-link" %>
         </div>
-        <p><%= flat.location %></p>
+        <h4><%= link_to flat.name, flat_path(flat) %></h4>
+        <p> From: €<%= flat.price %> per night </p>
       </div>
     </div>
     <% end %>
   </div>
+
+  <div id="map">
+
+  </div>
+
 </div>
+
+<script type="text/javascript">
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    <% end %>
+  <% end %>
+</script>
+
+
+
+
+
+
+
+
+
+
+
 

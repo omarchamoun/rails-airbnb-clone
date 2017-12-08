@@ -1,9 +1,60 @@
 class BookingsController < ApplicationController
+# Step 1. Add migration to booking, adding a message and status
+# Step 2. Change the Query to have all of the flats
+# Step 3. Show (use le wagon ui) to display
+
+  before_action :set_booking, only: [:cancel, :approve, :decline]
+
+
+
+  def index
+    @bookings = Booking.where(user: current_user)
+  end
 
   def create
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    @booking.flat = set_flat
+    @booking.save
+    if @booking.save
+      redirect_to bookings_path
+    end
   end
 
   def destroy
   end
 
+  def approve
+    @booking.status = "Approved"
+    @booking.save
+    redirect_to bookings_path
+  end
+
+  def cancel
+    @booking.status = "Cancel"
+    @booking.save
+    redirect_to bookings_path
+  end
+
+  def decline
+    @booking.status = "Declined"
+    @booking.save
+    redirect_to bookings_path
+  end
+
+
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:start_date, :end_date)
+  end
+
+  def set_flat
+    @flat = Flat.find(params[:flat_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 end

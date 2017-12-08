@@ -11,7 +11,14 @@ gem 'redis'
 gem 'omniauth-facebook'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+
 gem 'pg_search'
+
+
+gem "geocoder"
+gem "coffee-rails"
+gem "gmaps4rails"
+gem 'underscore-rails'
 
 
 gem 'autoprefixer-rails'
