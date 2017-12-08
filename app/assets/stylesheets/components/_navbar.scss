@@ -26,6 +26,17 @@
   border-radius: 50%;
 }
 
+.edit-profile {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.edit-profile-container {
+  min-height: calc(100vh - 169px);
+}
+
 /* Right section */
 .navbar-wagon-right {
   display: flex;
