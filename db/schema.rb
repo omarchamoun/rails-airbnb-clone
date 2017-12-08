@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 20171207163050) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.string "start_date"
-    t.string "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "total_price"
     t.bigint "flat_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "total_amount_of_days"
     t.string "description"
     t.string "status", default: "pending"
     t.index ["flat_id"], name: "index_bookings_on_flat_id"
@@ -64,7 +65,7 @@ ActiveRecord::Schema.define(version: 20171207163050) do
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
-    t.boolean "owner", default: false
+    t.boolean "owner"
     t.bigint "registration_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
