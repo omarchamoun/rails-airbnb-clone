@@ -1,0 +1,19 @@
+
+  <div class="container" id="sign-in-container">
+    <div class="form-content">
+    <button class="close-modal" onClick="toggleModal()">X</button>
+        <h2>Sign in</h2>
+        <%= form_for(:registration, :url => session_path(:registration)) do |f| %>
+          <%= f.text_field :email %>
+          <%= f.password_field :password %>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+          <%= f.submit 'Sign in' %>
+          <%= link_to "Forgot your password?", new_password_path(:registration), :class => 'links_form'%>
+        <% end %>
+        <div class="form-link">
+          <%= render "devise/shared/links" %>
+        </div>
+    </div>
+  </div>
+

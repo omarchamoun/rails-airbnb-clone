@@ -1,6 +1,7 @@
 class FlatsController < ApplicationController
 before_action :set_user, only: [:create, :edit, :update, :destroy]
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
+helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
   def index
       @query = params[:search]
@@ -58,6 +59,25 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
     @flat.destroy
     redirect_to flats_path
   end
+
+  ## methods for modal
+
+ def resource_name
+    :registration
+  end
+
+  def resource
+    @resource ||= Registration.new
+  end
+
+  def resource_class
+    Registration
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:registration]
+  end
+  ##
 
   private
 
