@@ -1,37 +1,44 @@
-  <div class="container">
+  <div class="container trips-wrapper">
     <h3 class="text-center"> My trips</h3>
-    <% @bookings.each do |booking| %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+        <% @bookings.each do |booking| %>
 
-    <div class="message">
-      <img class="avatar-large" src="https://unsplash.it/50/50">
-      <div class="message-name">
-        <h3><%= booking.flat.name
-        %></h3>
-        <p> <%= booking.start_date %> </p>
+        <div class="message">
+          <img class="avatar-large" src="https://unsplash.it/50/50">
+          <div class="message-name">
+            <h3><%= booking.flat.name
+            %></h3>
+            <p> <%= booking.start_date %> </p>
 
-      </div>
-      <div class="message-body">
-        <p><strong> <%= booking.flat.description %> </strong></p>
-      </div>
-      <div class="message-status">
-        <% if booking.status == "Approved" %>
-        <p class="status accepted"><%= booking.status %></p>
-        <p class="price"></p>
-        <% elsif booking.status == "Declined"%>
-        <p class="status declined"><%= booking.status %></p>
-        <p class="price"></p>
-        <%  else %>
-        <p class="status pending"><%= booking.status %></p>
-        <p class="price"></p>
+          </div>
+          <div class="message-body">
+            <p><strong> <%= booking.flat.description %> </strong></p>
+          </div>
+          <div class="message-status">
+            <% if booking.status == "Approved" %>
+            <p class="status accepted"><%= booking.status %></p>
+            <p class="price"></p>
+            <% elsif booking.status == "Declined"%>
+            <p class="status declined"><%= booking.status %></p>
+            <p class="price"></p>
+            <%  else %>
+            <p class="status pending"><%= booking.status %></p>
+            <p class="price"></p>
+            <% end %>
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
-    <% end %>
   </div>
 
 
-  <div class="container">
+  <div class="container bookings-wrapper">
   <h3 class="text-center"> My bookings</h3>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+
     <% current_user.flats.each do |flat| %>
     <% if flat.bookings.any? %>
     <% flat.bookings.each do |booking| %>
@@ -65,6 +72,10 @@
     <% end %>
     <% end  %>
     <% end %>
+
+    </div>
+
+  </div>
   </div>
 
 
