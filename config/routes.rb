@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :registrations, :controllers => { registrations: "registrations",
   omniauth_callbacks: 'registrations/omniauth_callbacks' }
 
-  resources :user, only: [:edit, :update, :destroy]
+  resources :users, only: [:edit, :update, :destroy]
   resources :flats do
     resources :bookings, only: [:create, :destroy, :edit]
   end
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
      patch "approve", to: "bookings#approve"
     end
   end
+
+  get "dashboard", to: "pages#edit_profile"
 
 
 end

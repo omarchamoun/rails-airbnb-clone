@@ -7,4 +7,8 @@ class PagesController < ApplicationController
         marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
       end
   end
+
+  def edit_profile
+    @user = current_user
+  end
 end
