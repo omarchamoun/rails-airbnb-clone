@@ -13,6 +13,24 @@
   }
 }
 
+.btn-airbnb-2{
+  background-color: white;
+  color: #ff2f51;
+  border: solid 3px #ff2f51;
+  border-radius: 5px;
+  opacity:0.6;
+  padding: 3px;
+  font-weight: lighter;
+  width: 100px;
+  height:32px;
+  font-size: 16px;
+  &:hover{
+    opacity:0.9;
+    text-decoration: none;
+    color: #ff2f51;
+  }
+}
+
 .btn-airbnb-pink{
   background-color: #ff2f51;
   color: white;

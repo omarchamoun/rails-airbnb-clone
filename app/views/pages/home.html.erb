@@ -5,11 +5,12 @@
     <h1>AirBnB</h1>
     <p>Book unique flats and experience the city like a local</p>
 
+    <div class="search">
     <%= form_tag("/flats", method: "get") do %>
-      <%= label_tag(:search, "Search for:") %>
       <%= text_field_tag(:search) %>
-      <%= submit_tag("Search") %>
+      <%= submit_tag("Search", class: "btn-airbnb-2") %>
     <% end %>
+    </div>
     <%#  link_to "Search for houses", flats_path, class: "btn-airbnb-pink" %>
   </div>
 </div>
