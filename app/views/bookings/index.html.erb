@@ -48,14 +48,19 @@
       <p>
         <%= booking.flat.location %>
       </p>
-    </div>
-    <div class="message-status">
       <p>
         Start date:  <%= booking.start_date %>
       </p>
       <p>
        End date:  <%= booking.end_date %>
-
+      </p>
+    </div>
+    <div class="message-status">
+      <%= link_to "Accept", approve_booking_path(booking), method: :patch, class: "btn btn-success" %>
+      <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger"  %>
+      <p>
+        <%= booking.status %>
+      </p>
      </div>
    </div>
 

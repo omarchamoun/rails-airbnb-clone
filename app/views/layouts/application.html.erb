@@ -10,9 +10,11 @@
 
   </head>
   <body>
-    <%= render 'shared/navbar' unless yield(:no_nav) %>
+
+    <%= render 'shared/navbar' unless content_for?(:no_nav)%>
     <%= render 'shared/flash' %>
     <%= yield %>
+
      <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>

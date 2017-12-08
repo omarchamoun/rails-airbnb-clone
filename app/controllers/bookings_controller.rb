@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
 # Step 2. Change the Query to have all of the flats
 # Step 3. Show (use le wagon ui) to display
 
+  before_action :set_booking, only: [:cancel, :approve, :decline]
+
 
 
   def index
@@ -23,15 +25,21 @@ class BookingsController < ApplicationController
   end
 
   def approve
-
+    @booking.status = "Approved"
+    @booking.save
+    redirect_to bookings_path
   end
 
   def cancel
-
+    @booking.status = "Cancel"
+    @booking.save
+    redirect_to bookings_path
   end
 
   def decline
-
+    @booking.status = "Declined"
+    @booking.save
+    redirect_to bookings_path
   end
 
 
@@ -44,5 +52,9 @@ class BookingsController < ApplicationController
 
   def set_flat
     @flat = Flat.find(params[:flat_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 end
