@@ -3,7 +3,7 @@
 <div class="cards-map-container">
 
   <div class="row">
-    <% @flats.each do |flat| %>
+    <% @flats_with_lats.each do |flat| %>
     <div class="col-xs-12 col-sm-4">
       <div class="total-card">
         <% if flat.photo_url.nil? %>
@@ -31,23 +31,14 @@
 
 </div>
 
-<script type="text/javascript">
-  <% content_for(:after_js) do %>
-    <%= javascript_tag do %>
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    <% end %>
-  <% end %>
-</script>
+<%= render 'shared/map' %>
+
+
+
+
+
+
+
 
 
 
