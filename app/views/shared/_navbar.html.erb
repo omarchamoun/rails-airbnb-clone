@@ -32,8 +32,9 @@
       <div class="navbar-wagon-right hidden-xs hidden-sm">
 
 
-        <%= link_to 'Home', flats_path, class: "navbar-wagon-item navbar-wagon-link"%>
-        <%= link_to 'Login',  new_registration_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Home', root_path, class: "navbar-wagon-item navbar-wagon-link"%>
+        <button onClick="toggleModal()" class= "navbar-wagon-item navbar-wagon-link">Sign in</button>
+
         <%= link_to 'Sign Up', new_registration_registration_path, class: "navbar-wagon-item navbar-wagon-link"%>
 
 
