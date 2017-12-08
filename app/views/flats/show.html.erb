@@ -49,6 +49,7 @@
     </div>
 
     <script>
+
       const form = document.getElementById('new_booking');
       const displayResult = document.getElementById("total-price");
 
@@ -67,6 +68,7 @@
             console.log('diff days is right');
             let totalPrice = diffDays * <%= @flat.price %>;
             displayResult.insertAdjacentHTML("beforeend", 'Total price: ' + totalPrice + '€');
+
           }
 
        });

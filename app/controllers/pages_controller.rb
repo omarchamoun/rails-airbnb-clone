@@ -14,22 +14,22 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
-  ## methods for modal
-  def resource_name
-    :registration
-  end
+#   ## methods for modal
+#   def resource_name
+#     :registration
+#   end
 
-  def resource
-    @resource ||= Registration.new
-  end
+#   def resource
+#     @resource ||= Registration.new
+#   end
 
-  def resource_class
-    Registration
-  end
+#   def resource_class
+#     Registration
+#   end
 
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:registration]
-  end
-##
+#   def devise_mapping
+#     @devise_mapping ||= Devise.mappings[:registration]
+#   end
+# ##
 
 end
