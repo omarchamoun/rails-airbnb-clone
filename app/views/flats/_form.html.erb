@@ -1,4 +1,5 @@
 <!-- <div class="container"> -->
+  <div class="container sign-wrapper text-center">
   <div class="row">
     <div class="col-xs-12 col-md-offset-3 col-md-6">
       <%= simple_form_for(@flat) do |f| %>
@@ -8,10 +9,9 @@
         <%= f.input :price %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
-        <%= f.submit class: "btn-airbnb-pink"%>
+        <%= f.submit class: "btn-airbnb-2"%>
       <% end %>
-      <br>
-      <%= link_to "Back to Flats", flats_path, class: "btn-airbnb-pink" %>
     </div>
   </div>
+</div>
 <!-- </div> -->
