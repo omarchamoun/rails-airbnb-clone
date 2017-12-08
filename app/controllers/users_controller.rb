@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if User.update(user_params)
-      redirect_to flats_path
+      redirect_to root_path
       flash[:notice] = "You have succesfully updated your profile"
     else
       render :edit
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :gender)
+    params.require(:user).permit(:first_name, :last_name, :gender, :photo, :photo_cache)
   end
 
 end
