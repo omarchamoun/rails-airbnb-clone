@@ -4,15 +4,13 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
 
   def index
       @query = params[:search]
-      @flats = Flat.search_full_text(@query)
+      flats = Flat.search_full_text(@query)
       @flats_with_lats = []
-      @flats.each do |flat|
+      flats.each do |flat|
         if flat.latitude && flat.longitude
           @flats_with_lats << flat
         end
       end
-
-      # @flats = Flat.where.not(latitude: nil, longitude: nil)
       @markers = Gmaps4rails.build_markers(@flats_with_lats) do |flat, marker|
         marker.lat flat.latitude
         marker.lng flat.longitude

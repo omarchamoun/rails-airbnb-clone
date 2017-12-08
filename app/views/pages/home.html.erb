@@ -15,3 +15,53 @@
     <%#  link_to "Search for houses", flats_path, class: "btn-airbnb-pink" %>
   </div>
 </div>
+
+<div class="cards-map-container">
+
+  <div class="row">
+    <% @flats.each do |flat| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="total-card">
+        <% if flat.photo_url.nil? %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://kitt.lewagon.com/placeholder/cities/random')";>
+        <% else %>
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path flat.photo, height: 300, width: 400, crop: :fill %>);">
+        <% end %>
+          <div class="card-category">
+          </div>
+          <div class="card-description">
+            <i class="fa fa-heart-o" aria-hidden="true"></i>
+          </div>
+          <%= link_to '', flat_path(flat), class: "card-link" %>
+        </div>
+        <h4><%= link_to flat.name, flat_path(flat) %></h4>
+        <p> From: €<%= flat.price %> per night </p>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="map">
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    <% end %>
+  <% end %>
+</script>
+
