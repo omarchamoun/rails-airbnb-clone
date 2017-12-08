@@ -1,14 +1,39 @@
+require 'faker'
+
 User.destroy_all
 Registration.destroy_all
 Flat.destroy_all
 # Booking.destroy_all
+# location = Faker::Address.street_address
+# email = Faker::Internet.free_email
+password = "123456"
 
-# emails = ["omar@girl.com", "sergio@bread.com", "dan@pink.com","ollie@belt.com"]
+10.times do
+  registration = Registration.new(email: Faker::Internet.free_email, password: "123456")
+  registration.save
 
-# emails.each do |email|
-#   registration_instance = Registration.new( email: email, password: "123456")
-#   registration_instance.save
-# end
+  user = User.new(first_name: Faker::Name.first_name , last_name: Faker::Name.last_name, gender: "male")
+  user.registration = registration
+  user.save
+# p user.first_name
+
+  rand(0..3).times do
+    url = "http://lorempixel.com/1600/600/city/" + rand(1..10).to_s
+    flat = Flat.new(
+      name: Faker::Lorem.word,
+      description: Faker::Lorem.sentences,
+      location: Faker::Address.street_address,
+      price: rand(100..1500),
+      photo: url,
+       )
+    flat.user = user
+    flat.save
+    # flat.photo = url
+  end
+end
+
+
+
 emilio_reg = Registration.new(email: "emilio@messi.com", password: "123456")
 emilio_reg.save
 # p emilio_reg.errors.full_messages
@@ -17,7 +42,7 @@ emilio = User.new(first_name: "Emilio", last_name: "Hasbun", gender: "male")
 emilio.registration = emilio_reg
 emilio.save
 
-# p emilio.save
+p emilio.save
 
 emilio_flat = Flat.new(name: "Miami Beach House", description: "The house of Tomeu is situated just beautiful. To be honest - it is even more beautiful than on the pictures. We have stayed here with our little son ", location: "Miami", price: 300)
 
@@ -94,12 +119,12 @@ p dan_flat.save
 
 
 
-# booking_1 = Booking.new(start_date: "07-07-2017", end_date: "07-10-2017")
-# booking_1.flat = martine_flat
-# booking_1.user = emilio
-# p "booking_1.save"
-# p booking_1.save
-# booking_1.errors.full_messages
+# # booking_1 = Booking.new(start_date: "07-07-2017", end_date: "07-10-2017")
+# # booking_1.flat = martine_flat
+# # booking_1.user = emilio
+# # p "booking_1.save"
+# # p booking_1.save
+# # booking_1.errors.full_messages
 
 
 

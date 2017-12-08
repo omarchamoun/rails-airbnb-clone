@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <a href="/" class="navbar-wagon-brand">
-    <%= image_tag('logo.png')  %>
+    <%= image_tag('logo2.png')  %>
   </a>
 
   <!-- Right Navigation -->
@@ -15,10 +15,10 @@
         <!-- Profile picture with dropdown list -->
         <div class="navbar-wagon-item">
           <div class="dropdown">
-            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+            <% avatar_url = current_user.facebook_picture_url || current_user.photo.url ||"http://placehold.it/30x30" %>
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><a href="#">Profile</a></li>
+              <li><a href="dashboard">Profile</a></li>
               <li>
                 <%= link_to "My Bookings", bookings_path %>
               </li>
@@ -32,8 +32,9 @@
       <div class="navbar-wagon-right hidden-xs hidden-sm">
 
 
-        <%= link_to 'Home', flats_path, class: "navbar-wagon-item navbar-wagon-link"%>
-        <%= link_to 'Login',  new_registration_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to 'Home', root_path, class: "navbar-wagon-item navbar-wagon-link"%>
+        <button onClick="toggleModal()" class= "navbar-wagon-item navbar-wagon-link">Sign in</button>
+
         <%= link_to 'Sign Up', new_registration_registration_path, class: "navbar-wagon-item navbar-wagon-link"%>
 
 

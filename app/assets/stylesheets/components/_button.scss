@@ -13,6 +13,24 @@
   }
 }
 
+.btn-airbnb-2{
+  background-color: white;
+  color: #ff2f51;
+  border: solid 3px #ff2f51;
+  border-radius: 5px;
+  opacity:0.6;
+  padding: 3px;
+  font-weight: lighter;
+  width: 100px;
+  height:32px;
+  font-size: 16px;
+  &:hover{
+    opacity:0.9;
+    text-decoration: none;
+    color: #ff2f51;
+  }
+}
+
 .btn-airbnb-pink{
   background-color: #ff2f51;
   color: white;
@@ -25,5 +43,34 @@
     text-decoration: none;
     color:white;
   }
-
 }
+
+.btn-medium-airbnb {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+.btn-medium-airbnb:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+}
+.btn-treehouse-airbnb {
+  color: white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+.btn-treehouse-airbnb:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+/* Build your own button classes ! */

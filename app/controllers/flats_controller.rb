@@ -1,18 +1,17 @@
 class FlatsController < ApplicationController
 before_action :set_user, only: [:create, :edit, :update, :destroy]
 before_action :set_flat, only: [:show, :edit, :update, :destroy]
+helper_method :resource_name, :resource, :devise_mapping, :resource_class
 
   def index
       @query = params[:search]
-      @flats = Flat.search_full_text(@query)
+      flats = Flat.search_full_text(@query)
       @flats_with_lats = []
-      @flats.each do |flat|
+      flats.each do |flat|
         if flat.latitude && flat.longitude
           @flats_with_lats << flat
         end
       end
-
-      # @flats = Flat.where.not(latitude: nil, longitude: nil)
       @markers = Gmaps4rails.build_markers(@flats_with_lats) do |flat, marker|
         marker.lat flat.latitude
         marker.lng flat.longitude
@@ -31,6 +30,7 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
   def create
     @flat = Flat.new(flat_params)
     @flat.user = @user
+
     if @flat.save
        flash[:notice] = "You have succesfully created a flat"
       redirect_to flat_path(@flat)
@@ -59,6 +59,25 @@ before_action :set_flat, only: [:show, :edit, :update, :destroy]
     @flat.destroy
     redirect_to flats_path
   end
+
+  ## methods for modal
+
+ def resource_name
+    :registration
+  end
+
+  def resource
+    @resource ||= Registration.new
+  end
+
+  def resource_class
+    Registration
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:registration]
+  end
+  ##
 
   private
 

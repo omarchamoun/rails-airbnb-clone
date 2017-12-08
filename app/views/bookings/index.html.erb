@@ -1,130 +1,82 @@
-<div class="wrapper-main">
+  <div class="container trips-wrapper">
+    <h3 class="text-center"> My trips</h3>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+        <% @bookings.each do |booking| %>
 
-  <h1>
-    Welcome to your bookings
-  </h1>
-</div>
+        <div class="message">
+          <img class="avatar-large" src="https://unsplash.it/50/50">
+          <div class="message-name">
+            <h3><%= booking.flat.name
+            %></h3>
+            <p> <%= booking.start_date %> </p>
 
-<h1 class="text-center"> My trips!</h1>
-<div class="container">
-
-  <% @bookings.each do |booking| %>
-
-  <div class="message">
-    <img class="avatar-large" src="https://unsplash.it/50/50">
-    <div class="message-name">
-      <h3><%= booking.flat.name %></h3>
-      <p> <%= booking.start_date %> </p>
-
-    </div>
-    <div class="message-body">
-      <p><strong> <%= booking.flat.description %> </strong></p>
-      <p>
-        I am not sure yet! I might be in Shanghai at this moment... Can I tell you later?
-      </p>
-    </div>
-    <div class="message-status">
-      <p class="status pending">Pending</p>
-      <p class="price"></p>
+          </div>
+          <div class="message-body">
+            <p><strong> <%= booking.flat.description %> </strong></p>
+          </div>
+          <div class="message-status">
+            <% if booking.status == "Approved" %>
+            <p class="status accepted"><%= booking.status %></p>
+            <p class="price"></p>
+            <% elsif booking.status == "Declined"%>
+            <p class="status declined"><%= booking.status %></p>
+            <p class="price"></p>
+            <%  else %>
+            <p class="status pending"><%= booking.status %></p>
+            <p class="price"></p>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <% end %>
-</div>
-
-<h1 class="text-center"> My bookings!</h1>
-<div class="container">
-  <% current_user.flats.each do |flat| %>
-  <% if flat.bookings.any? %>
-  <% flat.bookings.each do |booking| %>
 
 
-  <div class="message">
-    <img class="avatar-large" src="https://unsplash.it/50/50">
-    <div class="message-name">
-      <h3><%= booking.flat.name %></h3>
-      <p><%=  booking.flat.description %></p>
+  <div class="container bookings-wrapper">
+  <h3 class="text-center"> My bookings</h3>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-8 col-md-offset-2">
+
+    <% current_user.flats.each do |flat| %>
+    <% if flat.bookings.any? %>
+    <% flat.bookings.each do |booking| %>
+
+
+    <div class="message">
+      <img class="avatar-large" src="https://unsplash.it/50/50">
+      <div class="message-name">
+        <p>Start: <%= booking.start_date %></p>
+        <p> End: <%= booking.end_date %> </p>
+      </div>
+      <div class="message-body">
+        <h5><%= booking.user.first_name %></h5>
+        <p>
+          <%= booking.description %>
+        </p>
+      </div>
+      <div class="message-status">
+        <p>
+          <%= booking.status %>
+        </p>
+        <% if booking.status == 'pending' %>
+        <%= link_to "Accept", approve_booking_path(booking), method: :patch, class: "btn btn-success" %>
+        <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger"  %>
+        <% else %>
+        <%= link_to "Cancel", cancel_booking_path(booking), method: :patch, class: "btn btn-danger" %>
+        <% end %>
+      </div>
     </div>
-    <div class="message-body">
-      <p>
-        <%= booking.flat.location %>
-      </p>
-      <p>
-        Start date:  <%= booking.start_date %>
-      </p>
-      <p>
-       End date:  <%= booking.end_date %>
-      </p>
+
+    <% end %>
+    <% end  %>
+    <% end %>
+
     </div>
-    <div class="message-status">
-      <%= link_to "Accept", approve_booking_path(booking), method: :patch, class: "btn btn-success" %>
-      <%= link_to "Decline", decline_booking_path(booking), method: :patch, class: "btn btn-danger"  %>
-      <p>
-        <%= booking.status %>
-      </p>
-     </div>
-   </div>
 
- </p>
- <% end %>
- <% end  %>
- <% end %>
-</div>
+  </div>
+  </div>
 
 
-<style>
-.message {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
-}
-.message:last-child {
-  border-bottom: none;
-}
-.message-body {
-  flex-grow: 1;
-}
-.message-name {
-  padding-left: 10px;
-  min-width: 100px;
-}
-.message-name h3 {
-  font-size: 13px;
-  margin-bottom: 0px;
-}
-.message-name p {
-  font-size: 13px;
-  font-weight: lighter;
-  opacity: 0.6;
-  margin-top: 5px;
-}
-.message-body {
-  padding-left: 10px;
-  font-size: 13px;
-  color: rgba(0,0,0,0.7);
-}
-.message-body {
-  padding-left: 20px;
-  color: rgba(0,0,0,0.4);
-}
-.message-body strong{
-  color: rgba(0,0,0,0.9);
-  color: rgba(0,0,0,0.9);
-}
-.message-body p {
-  margin: 6px 0;
-}
-.message-status {
-  font-size: 14px;
-  font-weight: bold;
-}
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
-}
-</style>
+

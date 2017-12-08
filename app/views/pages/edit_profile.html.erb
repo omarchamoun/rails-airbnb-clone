@@ -1,0 +1,19 @@
+
+<div class="container edit-profile-container">
+  <div class="col-xs-offset-4 col-xs-4">
+    <h1>Edit User Profile</h1>
+    <center>
+    <% avatar_url = current_user.facebook_picture_url || current_user.photo.url ||"http://placehold.it/30x30" %>
+    <%= image_tag avatar_url, class: "avatar dropdown-toggle edit-profile", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %></center>
+
+    <%= simple_form_for(@user, url: user_path(@user), method: :patch) do |f| %>
+    <%= f.input :first_name%>
+    <%= f.input :last_name %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.submit "Submit", class: "btn-airbnb-pink" %>
+    <% end %>
+  </div>
+</div>
+
+
