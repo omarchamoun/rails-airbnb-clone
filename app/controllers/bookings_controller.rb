@@ -8,7 +8,7 @@ class BookingsController < ApplicationController
 
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = current_user.bookings.where.not(status: "Cancelled")
   end
 
   def create
@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking.destroy
   end
 
   def approve
@@ -31,7 +32,7 @@ class BookingsController < ApplicationController
   end
 
   def cancel
-    @booking.status = "Cancel"
+    @booking.status = "Cancelled"
     @booking.save
     redirect_to bookings_path
   end
@@ -47,7 +48,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :description)
   end
 
   def set_flat
