@@ -28,6 +28,14 @@
   align-items:center;
   justify-content:center;
   flex-direction:column;
+
+   input[type=text] {
+    margin-bottom: 20px;
+  }
+
+  input[type=password] {
+    margin-bottom: 20px;
+  }
 }
 
 .form-content form {
@@ -55,4 +63,43 @@
   margin-top: 20px;
   font-size:15px;
   font-weight: lighter;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+.form-link {
+  a {
+  text-decoration: none;
+  color: black;
+  margin-top: 20px;
+  font-size:15px;
+  font-weight: lighter;
+  &:hover {
+    text-decoration:none;
+  }
+  }
+}
+
+
+.sign-wrapper {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color:white;
+  color: grey;
+  max-width:600px;
+  padding:20px;
+  a {
+    color: lightgray;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+  }
+}
+
+.form-inputs {
+  padding:20px;
+  margin: 20px;
 }
