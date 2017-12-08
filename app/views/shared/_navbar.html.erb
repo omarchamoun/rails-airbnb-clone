@@ -18,7 +18,7 @@
             <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-              <li><a href="#">Profile</a></li>
+              <li><a href="dashboard">Profile</a></li>
               <li>
                 <%= link_to "My Bookings", bookings_path %>
               </li>

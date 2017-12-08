@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
-    if @user.save
-      redirect_to user_path(@user)
+    if User.update(user_params)
+      redirect_to flats_path
+      flash[:notice] = "You have succesfully updated your profile"
     else
       render :edit
     end

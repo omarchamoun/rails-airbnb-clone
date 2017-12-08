@@ -1,0 +1,15 @@
+<%= render 'shared/navbar' %>
+
+<div class="banner banner-new" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "new_background.jpg"%>);">
+
+<div class="container">
+<h1>Edit User Profile</h1>
+
+<%= simple_form_for(@user, url: user_path(@user), method: :patch) do |f| %>
+<%= f.input :first_name%>
+<%= f.input :last_name %>
+
+<%= f.submit "Submit", class: "btn-airbnb-pink" %>
+<% end %>
+</div>
+
