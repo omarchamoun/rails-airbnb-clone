@@ -20,8 +20,8 @@ password = "123456"
   rand(0..3).times do
     url = "http://lorempixel.com/1600/600/city/" + rand(1..10).to_s
     flat = Flat.new(
-      name: Faker::DragonBall.character,
-      description: Faker::ChuckNorris.fact,
+      name: Faker::Lorem.word,
+      description: Faker::Lorem.sentences,
       location: Faker::Address.street_address,
       price: rand(100..1500),
       photo: url,
