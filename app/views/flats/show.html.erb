@@ -1,10 +1,4 @@
-<div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.5) 100%, rgba(0,30,100,0.7) 53%), url(<%= image_path "background.jpg"%>);">
-  <div class="banner-content">
-    <h1>
-      <%= @flat.name %>
-    </h1>
-      <%= link_to "Back to all flats", flats_path, class: "btn btn-primary" %>
-  </div>
+<div class="banner-show" style="background-image: linear-gradient(-225deg, rgba(0,100,183,0.1) 100%, rgba(0,30,100,0.4) 53%), url(<%= image_path "background.jpg"%>);">
 </div>
 
 
@@ -12,20 +6,35 @@
   <div class="wrapper-description-book">
 
 
-    <div class="description-flat">
-      <h5>
-        <%= @flat.description %>
-      </h5>
+    <div id="info-flat">
+     <!--  <div class = "title-flat"> -->
+      <div class= "title-info">
+        <h1>
+        <%= @flat.name %>
+        </h1>
+        <% avatar_url = @flat.user.facebook_picture_url || "http://placehold.it/30x30"%>
+        <%= image_tag avatar_url, class: "info-avatar" %> <%= @flat.user.first_name %>
+
+      </div>
       <h5>
         <%= @flat.location %>
       </h5>
-      <p>
-        <%= @flat.price %>€ per night
-      </p>
+      <div class = "icon-info">
+        <i class="fa fa-bath" aria-hidden="true"><strong>1 bath</strong></i>
+        <i class="fa fa-bed" aria-hidden="true"> <strong> 2 beds </strong></i>
+        <i class="fa fa-users" aria-hidden="true"><strong>3 people</strong></i>
+      </div>
+
+      <h5>
+        <%= @flat.description %>
+      </h5>
     </div>
 
 
     <div class="book-flat">
+      <p>
+        <%= @flat.price %>€ per night
+      </p>
       <%= simple_form_for [@flat, @booking], input_html: { id: "flat-form"} do |f| %>
         <%= f.input :start_date, as: :date, html5: true  %>
         <%= f.input :end_date, as: :date, html5: true  %>
@@ -36,6 +45,7 @@
         <% #(start_date..end_date).to_a.size  %>
 
       <% end %>
+
     </div>
 
     <script>
